@@ -2,16 +2,12 @@
   "name": "zamflow-frontend",
   "version": "0.1.0",
   "homepage": "https://barrackoyoo.github.io/zamflow",
-<<<<<<< HEAD
   "private": true,
-=======
->>>>>>> acaa7c5 (add missing sonner dependency)
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
-<<<<<<< HEAD
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -21,7 +17,6 @@
   },
   "devDependencies": {
     "gh-pages": "^6.3.0"
-=======
   },
   "dependencies": {
     "gh-pages": "^6.1.0",
@@ -41,6 +36,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
->>>>>>> acaa7c5 (add missing sonner dependency)
   }
 }
