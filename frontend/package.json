@@ -1,7 +1,6 @@
 {
   "name": "zamflow-frontend",
   "version": "0.1.0",
-  "homepage": "https://barrackoyoo.github.io/zamflow",
   "private": true,
   "scripts": {
     "start": "react-scripts start",
@@ -16,7 +15,8 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.26.2",
     "react-scripts": "5.0.1",
-    "sonner": "^2.0.7"
+    "sonner": "^2.0.7",
+    "uuid": "^11.1.0"
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
