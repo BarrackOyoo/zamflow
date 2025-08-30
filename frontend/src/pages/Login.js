@@ -1,47 +1,50 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
+'use client'
 
-import { Button } from '../components/ui/button';
-import { Input } from '../components/ui/input';
-import { Label } from '../components/ui/label';
-import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
-import { toast } from 'sonner';
-import { Mail, Lock, Moon, Sun, BarChart3 } from 'lucide-react';
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { useAuth } from '../contexts/AuthContext'
+import { useTheme } from '../contexts/ThemeContext'
+
+import { Button } from '../components/ui/button'
+import { Input } from '../components/ui/input'
+import { Label } from '../components/ui/label'
+import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card'
+import { toast } from 'sonner'
+import { Mail, Lock, Moon, Sun, BarChart3 } from 'lucide-react'
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [loading, setLoading] = useState(false);
-  const { login } = useAuth();
-  const { theme, toggleTheme } = useTheme();
-  const navigate = useNavigate();
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [loading, setLoading] = useState(false)
+  const { login } = useAuth()
+  const { theme, toggleTheme } = useTheme()
+  const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    
+    e.preventDefault()
+
     if (!email || !password) {
-      toast.error('Please fill in all fields');
-      return;
+      toast.error('Please fill in all fields')
+      return
     }
 
-    setLoading(true);
+    setLoading(true)
     try {
-      await login(email, password);
-      toast.success('Login successful!');
-      navigate('/dashboard');
+      await login(email, password)
+      toast.success('Login successful!')
+      navigate('/dashboard')
     } catch (error) {
-      console.error('Login error:', error);
-      toast.error('Invalid email or password');
+      console.error('Login error:', error)
+      toast.error('Invalid email or password')
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  };
+  }
 
   const loginAsAdmin = () => {
-    setEmail('admin@example.com');
-    setPassword('admin123');
-  };
+    setEmail('admin@example.com')
+    setPassword('admin123')
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden">
@@ -87,7 +90,7 @@ const Login = () => {
                   />
                 </div>
               </div>
-              
+
               <div className="space-y-2">
                 <Label htmlFor="password">Password</Label>
                 <div className="relative">
@@ -104,8 +107,8 @@ const Login = () => {
                 </div>
               </div>
 
-              <Button 
-                type="submit" 
+              <Button
+                type="submit"
                 className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold py-2.5 rounded-xl transition-all duration-200 hover:scale-[1.02]"
                 disabled={loading}
               >
@@ -125,8 +128,8 @@ const Login = () => {
 
             <div className="text-center text-sm text-gray-600 dark:text-gray-400">
               Don't have an account?{' '}
-              <Link 
-                to="/signup" 
+              <Link
+                to="/signup"
                 className="font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400 transition-colors"
               >
                 Sign up
@@ -149,7 +152,7 @@ const Login = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login

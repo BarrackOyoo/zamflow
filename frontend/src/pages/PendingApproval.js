@@ -1,21 +1,24 @@
-import React from 'react';
-import { useAuth } from '../contexts/AuthContext';
+'use client'
 
-import { Button } from '../components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
-import { Clock, BarChart3, Moon, Sun, LogOut } from 'lucide-react';
+import React from 'react'
+import { useAuth } from '../contexts/AuthContext'
+import { useTheme } from '../contexts/ThemeContext'
+
+import { Button } from '../components/ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card'
+import { Clock, BarChart3, Moon, Sun, LogOut } from 'lucide-react'
 
 const PendingApproval = () => {
-  const { currentUser, logout } = useAuth();
-  const { theme, toggleTheme } = useTheme();
+  const { currentUser, logout } = useAuth()
+  const { theme, toggleTheme } = useTheme()
 
   const handleLogout = async () => {
     try {
-      await logout();
+      await logout()
     } catch (error) {
-      console.error('Logout error:', error);
+      console.error('Logout error:', error)
     }
-  };
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden">
@@ -100,7 +103,7 @@ const PendingApproval = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default PendingApproval;
+export default PendingApproval

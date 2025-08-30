@@ -1,0 +1,108 @@
+{
+  "version": 3,
+  "pages404": true,
+  "caseSensitive": false,
+  "basePath": "",
+  "redirects": [
+    {
+      "source": "/:file((?!\\.well-known(?:/.*)?)(?:[^/]+/)*[^/]+\\.\\w+)/",
+      "destination": "/:file",
+      "internal": true,
+      "missing": [
+        {
+          "type": "header",
+          "key": "x-nextjs-data"
+        }
+      ],
+      "statusCode": 308,
+      "regex": "^(?:/((?!\\.well-known(?:/.*)?)(?:[^/]+/)*[^/]+\\.\\w+))/$"
+    },
+    {
+      "source": "/:notfile((?!\\.well-known(?:/.*)?)(?:[^/]+/)*[^/\\.]+)",
+      "destination": "/:notfile/",
+      "internal": true,
+      "statusCode": 308,
+      "regex": "^(?:/((?!\\.well-known(?:/.*)?)(?:[^/]+/)*[^/\\.]+))$"
+    }
+  ],
+  "headers": [],
+  "rewrites": {
+    "beforeFiles": [],
+    "afterFiles": [],
+    "fallback": []
+  },
+  "dynamicRoutes": [],
+  "staticRoutes": [
+    {
+      "page": "/AdminPanel",
+      "regex": "^/AdminPanel(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/AdminPanel(?:/)?$"
+    },
+    {
+      "page": "/Analytics",
+      "regex": "^/Analytics(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/Analytics(?:/)?$"
+    },
+    {
+      "page": "/Dashboard",
+      "regex": "^/Dashboard(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/Dashboard(?:/)?$"
+    },
+    {
+      "page": "/Login",
+      "regex": "^/Login(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/Login(?:/)?$"
+    },
+    {
+      "page": "/PendingApproval",
+      "regex": "^/PendingApproval(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/PendingApproval(?:/)?$"
+    },
+    {
+      "page": "/Products",
+      "regex": "^/Products(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/Products(?:/)?$"
+    },
+    {
+      "page": "/Sales",
+      "regex": "^/Sales(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/Sales(?:/)?$"
+    },
+    {
+      "page": "/SalesHistory",
+      "regex": "^/SalesHistory(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/SalesHistory(?:/)?$"
+    },
+    {
+      "page": "/Signup",
+      "regex": "^/Signup(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/Signup(?:/)?$"
+    }
+  ],
+  "dataRoutes": [],
+  "rsc": {
+    "header": "rsc",
+    "varyHeader": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+    "prefetchHeader": "next-router-prefetch",
+    "didPostponeHeader": "x-nextjs-postponed",
+    "contentTypeHeader": "text/x-component",
+    "suffix": ".rsc",
+    "prefetchSuffix": ".prefetch.rsc",
+    "prefetchSegmentHeader": "next-router-segment-prefetch",
+    "prefetchSegmentSuffix": ".segment.rsc",
+    "prefetchSegmentDirSuffix": ".segments"
+  },
+  "rewriteHeaders": {
+    "pathHeader": "x-nextjs-rewritten-path",
+    "queryHeader": "x-nextjs-rewritten-query"
+  }
+}

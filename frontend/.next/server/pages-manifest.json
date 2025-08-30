@@ -1,0 +1,14 @@
+{
+  "/_error": "pages/_error.js",
+  "/AdminPanel": "pages/AdminPanel.js",
+  "/Analytics": "pages/Analytics.js",
+  "/Dashboard": "pages/Dashboard.js",
+  "/Login": "pages/Login.js",
+  "/PendingApproval": "pages/PendingApproval.js",
+  "/Sales": "pages/Sales.js",
+  "/Products": "pages/Products.js",
+  "/SalesHistory": "pages/SalesHistory.js",
+  "/_app": "pages/_app.js",
+  "/Signup": "pages/Signup.js",
+  "/_document": "pages/_document.js"
+}

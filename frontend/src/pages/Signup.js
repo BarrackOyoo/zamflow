@@ -1,57 +1,62 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
+'use client'
 
-import { Button } from '../components/ui/button';
-import { Input } from '../components/ui/input';
-import { Label } from '../components/ui/label';
-import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
-import { toast } from 'sonner';
-import { Mail, Lock, Moon, Sun, BarChart3, User } from 'lucide-react';
+import React, { useState } from 'react'
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import { useAuth } from '../contexts/AuthContext'
+import { useTheme } from '../contexts/ThemeContext'
+
+import { Button } from '../components/ui/button'
+import { Input } from '../components/ui/input'
+import { Label } from '../components/ui/label'
+import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card'
+import { toast } from 'sonner'
+import { Mail, Lock, Moon, Sun, BarChart3 } from 'lucide-react'
 
 const Signup = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [loading, setLoading] = useState(false);
-  const { signup } = useAuth();
-  const { theme, toggleTheme } = useTheme();
-  const navigate = useNavigate();
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
+  const [loading, setLoading] = useState(false)
+
+  const { signup } = useAuth()
+  const { theme, toggleTheme } = useTheme()
+  const router = useRouter()
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    
+    e.preventDefault()
+
     if (!email || !password || !confirmPassword) {
-      toast.error('Please fill in all fields');
-      return;
+      toast.error('Please fill in all fields')
+      return
     }
 
     if (password !== confirmPassword) {
-      toast.error('Passwords do not match');
-      return;
+      toast.error('Passwords do not match')
+      return
     }
 
     if (password.length < 6) {
-      toast.error('Password must be at least 6 characters long');
-      return;
+      toast.error('Password must be at least 6 characters long')
+      return
     }
 
-    setLoading(true);
+    setLoading(true)
     try {
-      await signup(email, password);
-      toast.success('Account created successfully! Please wait for admin approval.');
-      navigate('/pending');
+      await signup(email, password)
+      toast.success('Account created successfully! Please wait for admin approval.')
+      router.push('/pending')
     } catch (error) {
-      console.error('Signup error:', error);
+      console.error('Signup error:', error)
       if (error.code === 'auth/email-already-in-use') {
-        toast.error('Email is already registered');
+        toast.error('Email is already registered')
       } else {
-        toast.error('Failed to create account');
+        toast.error('Failed to create account')
       }
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  };
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden">
@@ -97,7 +102,7 @@ const Signup = () => {
                   />
                 </div>
               </div>
-              
+
               <div className="space-y-2">
                 <Label htmlFor="password">Password</Label>
                 <div className="relative">
@@ -130,8 +135,8 @@ const Signup = () => {
                 </div>
               </div>
 
-              <Button 
-                type="submit" 
+              <Button
+                type="submit"
                 className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold py-2.5 rounded-xl transition-all duration-200 hover:scale-[1.02]"
                 disabled={loading}
               >
@@ -141,8 +146,8 @@ const Signup = () => {
 
             <div className="text-center text-sm text-gray-600 dark:text-gray-400">
               Already have an account?{' '}
-              <Link 
-                to="/login" 
+              <Link
+                href="/login"
                 className="font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400 transition-colors"
               >
                 Sign in
@@ -165,7 +170,7 @@ const Signup = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Signup;
+export default Signup
